@@ -1,20 +1,19 @@
 package services
 
-import "github.com/edaurdodecarvalho/grpc-projest"
+import (
+	"context"
 
-// type UserServiceServer interface {
-// 	AddUser(context.Context, *User) (*User, error)
-// 	mustEmbedUnimplementedUserServiceServer()
-// }
+	"github.com/eduardodecarvalho/grpc-project/pb"
+)
 
 type UserService struct {
 	pb.UnimplementedUserServiceServer
 }
 
 func (*UserService) AddUser(ctx context.Context, req *pb.User) (*pb.User, error) {
-	return &pb.User {
-		Id: "1234",
-		Name: req.GetName(),
+	return &pb.User{
+		Id:    "1234",
+		Name:  req.GetName(),
 		Email: req.GetEmail(),
 	}, nil
 }
